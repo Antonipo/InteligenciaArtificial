@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Funciones de activación</title>
+</head>
+<body class="bg-gray-100 min-h-screen py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+        <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+            <h1 class="text-2xl font-semibold text-center mb-6">Perceptron Funciones de Activación</h1>
+            <form>
+                <div class="mb-4">
+                    <label for="inputs" class="text-gray-600">Inputs:</label>
+                    <input type="text" id="inputs" placeholder="0.5, 0.3, 0.2" class="w-full mt-2 p-2 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="weights" class="text-gray-600">Pesos:</label>
+                    <input type="text" id="weights" placeholder="0.4, -0.2, 0.1" class="w-full mt-2 p-2 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="bias" class="text-gray-600">Bias:</label>
+                    <input type="text" id="bias" placeholder="0.1" class="w-full mt-2 p-2 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="activationFunction" class="text-gray-600">Función de activación:</label>
+                    <select id="activationFunction" class="w-full mt-2 p-2 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500">
+                        <option value="sigmoid">Sigmoid</option>
+                        <option value="step">Escalón</option>
+                        <option value="tanh">Hiperbólica</option>
+                        <option value="relu">Lineal</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <button type="button" onclick="calculateOutput()" class="w-full py-3 bg-blue-600 text-white font-bold rounded-md hover:bg-blue-700 focus:outline-none">Calcular</button>
+                </div>
+        <br><br>
+
+        <label for="output" class="text-gray-600">Resultado:</label>
+<input type="text" id="output" readonly class="w-full mt-2 p-2 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500">
+</form>
+    <br><br>
+    <h3>Hecho por Rodriguez Vega,Luis Antonio</h3>
+    <script src="funciones.js"></script>
+    <script>
+        function calculateOutput() {
+            const inputs = document.getElementById("inputs").value.split(",").map(parseFloat);
+            const weights = document.getElementById("weights").value.split(",").map(parseFloat);
+            const bias = parseFloat(document.getElementById("bias").value);
+            const activationFunction = document.getElementById("activationFunction").value;
+
+            const output = perceptronActivationFunction(inputs, weights, bias, activationFunction);
+            document.getElementById("output").value = output;
+        }
+    </script>
+</body>
+</html>
